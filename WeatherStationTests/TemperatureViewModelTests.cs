@@ -121,11 +121,11 @@ namespace WeatherStationTests
         public void SetTemperatureService_WhenExecuted_TemperatureServiceIsNotNull()
         {
             // Arrange
-
-            // Act       
-
+            Mock<ITemperatureService> mock = new Mock<ITemperatureService>();
+            // Act                
+            _sut.SetTemperatureService(mock.Object);
             // Assert
-
+            Assert.NotNull(mock);
             /// TODO : git commit -a -m "T06 SetTemperatureService_WhenExecuted_TemperatureServiceIsNotNull : Done"
         }
 
