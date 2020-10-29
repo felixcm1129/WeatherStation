@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Text;
 using WeatherApp.Commands;
 using WeatherApp.Models;
@@ -18,7 +19,12 @@ namespace WeatherApp.ViewModels
 
         public TemperatureViewModel()
         {
-            
+            GetTempCommand = new DelegateCommand<string>(GetTemp, CanGetTemp);
+        }
+
+        private void GetTemp(string obj)
+        {
+            throw new NullReferenceException();
         }
 
         public double CelsiusInFahrenheit(double c)
@@ -31,10 +37,15 @@ namespace WeatherApp.ViewModels
             return f;
         }
 
-        public bool CanGetTemp()
+        private bool CanGetTemp(string obj)
         {
-            throw new NotImplementedException();
+            if (TemperatureService == null)
+            {
+                return false;
+            }
+            else return true;
         }
+
 
         public void SetTemperatureService(ITemperatureService service)
         {

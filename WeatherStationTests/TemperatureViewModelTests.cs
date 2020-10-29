@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using WeatherApp.ViewModels;
 using Xunit;
+using Xunit.Sdk;
 
 namespace WeatherStationTests
 {
@@ -69,9 +70,7 @@ namespace WeatherStationTests
         public void GetTempCommand_ExecuteIfNullService_ShouldThrowNullException()
         {
             // Arrange
-
             // Act       
-
             // Assert
             Assert.Throws<NullReferenceException>(() => _sut.GetTempCommand.Execute(string.Empty));
             /// TODO : git commit -a -m "T03 GetTempCommand_ExecuteIfNullService_ShouldThrowNullException : Done"
@@ -87,9 +86,10 @@ namespace WeatherStationTests
             // Arrange
 
             // Act       
-
+            var expected = false;
+            var actual = _sut.GetTempCommand.CanExecute(string.Empty);
             // Assert
-
+            Assert.Equal(actual, expected);
             /// TODO : git commit -a -m "T04 CanGetTemp_WhenServiceIsNull_ReturnsFalse : Done"
         }
 
