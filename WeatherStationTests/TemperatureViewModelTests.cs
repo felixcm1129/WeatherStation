@@ -31,7 +31,7 @@ namespace WeatherStationTests
             // Arrange
 
             // Act       
-            double actual = Math.Round(C * 9 / 5 + 32, 1);
+            double actual = Math.Round(((C * 9) / 5) + 32, 1);
             // Assert
             Assert.Equal(actual, expected);
             /// TODO : git commit -a -m "T01 CelsisInFahrenheit_AlwaysReturnGoodValue : Done"
@@ -55,9 +55,9 @@ namespace WeatherStationTests
             // Arrange
 
             // Act       
-
+            double actual = Math.Round(((F - 32) * 5) / 9, 1);
             // Assert
-
+            Assert.Equal(actual, expected);
             /// TODO : git commit -a -m "T02 FahrenheitInCelsius_AlwaysReturnGoodValue : Done"
         }
 
