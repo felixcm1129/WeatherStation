@@ -31,9 +31,9 @@ namespace WeatherStationTests
             // Arrange
 
             // Act       
-
+            double actual = Math.Round(C * 9 / 5 + 32, 1);
             // Assert
-
+            Assert.Equal(actual, expected);
             /// TODO : git commit -a -m "T01 CelsisInFahrenheit_AlwaysReturnGoodValue : Done"
         }
 
