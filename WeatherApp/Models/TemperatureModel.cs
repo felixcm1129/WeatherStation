@@ -6,7 +6,7 @@ namespace WeatherApp.Models
 {
     public class TemperatureModel
     {
-        public DateTime DateTime;
-        public double Temperature;
+        public DateTime DateTime { get; set; }
+        public double Temperature { get; set; }
     }
 }

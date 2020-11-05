@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Windows;
 using WeatherApp.Commands;
 using WeatherApp.Models;
 using WeatherApp.Services;
@@ -15,29 +17,29 @@ namespace WeatherApp.ViewModels
         public ITemperatureService TemperatureService;
 
         public DelegateCommand<string> GetTempCommand { get; set; }
-        public TemperatureModel CurrentTemp { get; private set; }
+        public TemperatureModel CurrentTemp { get; set; }
 
         public TemperatureViewModel()
         {
             GetTempCommand = new DelegateCommand<string>(GetTemp, CanGetTemp);
         }
 
-        private void GetTemp(string obj)
+        public async void GetTemp(string obj)
         {
-            throw new NullReferenceException();
+            CurrentTemp = await TemperatureService.GetTempAsync();
         }
 
-        public double CelsiusInFahrenheit(double c)
+        public static double CelsiusInFahrenheit(double c)
         {
             return c;
         }
 
-        public double FahrenheitInCelsius(double f)
+        public static double FahrenheitInCelsius(double f)
         {
             return f;
         }
 
-        private bool CanGetTemp(string obj)
+        public bool CanGetTemp(string obj)
         {
             if (TemperatureService == null)
             {
